@@ -82,7 +82,7 @@
       <td>{{$venda->data}}</td>
       <td>
       <a href="#alterar">Alterar</a>
-      <a href="#alterar">Deletar</a>
+      <a href="{{route('vendas.destroy', $venda->id)}}">Deletar</a>
 
       </td>
 

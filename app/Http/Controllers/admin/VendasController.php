@@ -103,6 +103,8 @@ class VendasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vendas = Vendas::find($id);
+        $vendas->delete();
+        return back()->withPasswordStatus(__('A notícia foi deletada'),compact('vendas'));
     }
 }
