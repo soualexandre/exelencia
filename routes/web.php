@@ -26,6 +26,8 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 Route::get('/vendas/index', 'App\Http\Controllers\admin\vendasController@index')->name('vendas.index')->middleware('auth');
 Route::get('/vendas/entrada', 'App\Http\Controllers\admin\vendasController@entrada')->name('vendas.entrada')->middleware('auth');
 Route::get('/vendas/saida', 'App\Http\Controllers\admin\vendasController@saida')->name('vendas.saida')->middleware('auth');
+Route::post('/vendas/create', 'App\Http\Controllers\admin\vendasController@store')->name('vendas.create')->middleware('auth');
+
 
 
 Route::group(['middleware' => 'auth'], function () {

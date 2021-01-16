@@ -20,11 +20,12 @@
 
 
 </div>
-<form clas="ml-4">
+<form clas="ml-4" method="post" action="{{route('vendas.create')}}" >
+@csrf
   <div class="form-row ">
     <div class="form-group col-md-4">
       <label for="inputState">Pagamento</label>
-      <select id="inputState" class="form-control">
+      <select id="inputState" class="form-control" required name="pagamento">
         <option selected value="selecione">Selecione</option>
         <option value="dinheiro">Dinheiro</option>
         <option value="debito">Cartão débito</option>
@@ -36,20 +37,20 @@
     <div class="form-row">
       <div class="form-group col-md-9 col-lg-12  ml-2">
         <label for="inputEmail4">Valor</label>
-        <input type="text" class="form-control" id="valor" placeholder="Ex: 25,00">
+        <input type="text" class="form-control" id="valor" placeholder="Ex: 25,00" required name="valor">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-9 col-lg-12 ml-2">
         <label for="inputEmail4">Data</label>
-        <input type="date" class="form-control" id="date">
+        <input type="date" class="form-control" id="date" required name="data">
       </div>
     </div>
 
   </div>
 
-  <button type="button" class="btn btn-primary">Cadastrar Venda</button>
+  <button type="submit" class="btn btn-primary"  href="{{route('vendas.create')}}">Cadastrar Venda</button>
 
 </form>
 
@@ -75,6 +76,12 @@
       <td>{{$venda->pagamento}}</td>
       <td>{{$venda->valor}}</td>
       <td>{{$venda->data}}</td>
+      <td>
+      <a href="#alterar">Alterar</a>
+      <a href="#alterar">Deletar</a>
+
+      </td>
+
 
   @endforeach
 

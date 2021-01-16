@@ -46,7 +46,18 @@ class VendasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'pagamento' => 'required|max:255',
+            'valor' => 'required',
+            'data' => 'required',
+        ]);
+        
+        Vendas::create($validated);
+
+        $vendas = Vendas::orderBy('id', 'DESC')->paginate('8');
+
+        return view('vendas.index', compact('vendas'));
     }
 
     /**

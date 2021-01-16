@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vendas extends Model
 {
+
+    protected $fillable = [
+        'pagamento',
+        'valor',
+        'data',
+    ];
+
     use HasFactory;
 }
