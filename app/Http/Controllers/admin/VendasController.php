@@ -57,7 +57,8 @@ class VendasController extends Controller
 
         $vendas = Vendas::orderBy('id', 'DESC')->paginate('8');
 
-        return view('vendas.index', compact('vendas'));
+        return back()->withStatus(__('Operação adicionada com sucesso'));
+
     }
 
     /**

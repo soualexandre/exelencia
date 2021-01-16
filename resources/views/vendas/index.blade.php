@@ -1,6 +1,10 @@
 @extends('layouts.app', ['page' => __('Icons'), 'pageSlug' => 'icons'])
 
 @section('content')
+
+
+@include('alerts.success')
+
 <div class="row">
   <div class="col-md-12">
 
