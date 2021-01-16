@@ -15,7 +15,7 @@
         <a class="dropdown-item" href="{{route('vendas.saida')}}">Saídas de Caixa</a>
       </div>
     </div>
-    <h2>Vendas Efetivadas - DRE</h2>
+    <h2>Entradas de Caixa</h2>
   </div>
 
 
@@ -23,7 +23,7 @@
 <form clas="ml-4">
   <div class="form-row ">
     <div class="form-group col-md-4">
-      <label for="inputState">Pagamento</label>
+      <label for="inputState">Recebimentos</label>
       <select id="inputState" class="form-control">
         <option selected value="selecione">Selecione</option>
         <option value="dinheiro">Dinheiro</option>
@@ -31,12 +31,16 @@
         <option value="crédito">Cartão crédito</option>
         <option value="boleto">Boleto</option>
         <option value="cheque">Cheque</option>
+        <option value="cheque">Vendas em Carteira</option>
+        <option value="cheque">Empréstimos</option>
+        <option value="cheque">Pagamento antecipado</option>
+        <option value="cheque">Limite de cheque especial das contas bancárias</option>
       </select>
     </div>
     <div class="form-row">
       <div class="form-group col-md-9 col-lg-12  ml-2">
         <label for="inputEmail4">Valor</label>
-        <input type="text" class="form-control" id="valor" placeholder="Ex: 25,00">
+        <input type="text" class="form-control" id="valor" placeholder="Ex: 25 ,00">
       </div>
     </div>
 
@@ -49,7 +53,7 @@
 
   </div>
 
-  <button type="button" class="btn btn-primary">Cadastrar Venda</button>
+  <button type="button" class="btn btn-primary">Cadastrar</button>
 
 </form>
 
@@ -68,22 +72,26 @@
     </tr>
   </thead>
   <tbody>
-@foreach($vendas as $venda)
-
     <tr>
-      <th scope="row">{{$venda->id}}</th>
-      <td>{{$venda->pagamento}}</td>
-      <td>{{$venda->valor}}</td>
-      <td>{{$venda->data}}</td>
-
-  @endforeach
-
+      <th scope="row">1</th>
+      <td>Credito</td>
+      <td>R$150,00</td>
+      <td>09/03/1998</td>
     </tr>
-
+    <tr>
+      <th scope="row">2</th>
+      <td>Debito</td>
+      <td>R$160,00</td>
+      <td>09/03/1998</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Boleto</td>
+      <td>R$190,00</td>
+      <td>09/03/1998</td>
+    </tr>
   </tbody>
-
 </table>
-{{$vendas->links()}}
 
 
 @endsection

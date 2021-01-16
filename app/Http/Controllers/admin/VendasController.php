@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Vendas;
 
 class VendasController extends Controller
 {
@@ -14,7 +15,17 @@ class VendasController extends Controller
      */
     public function index()
     {
-        return view('vendas.index');
+        $vendas = Vendas::orderBy('id', 'DESC')->paginate('8');
+
+        return view('vendas.index', compact('vendas'));
+    }
+
+    public function entrada(){
+        return view('vendas.entrada');
+    }
+
+    public function saida(){
+        return view('vendas.saida');
     }
 
     /**
