@@ -1,6 +1,8 @@
 @extends('layouts.app', ['page' => __('Icons'), 'pageSlug' => 'icons'])
 
 @section('content')
+
+@include('alerts.success')
 <div class="row">
   <div class="col-md-12">
 
@@ -20,40 +22,41 @@
 
 
 </div>
-<form clas="ml-4">
+<form clas="ml-4" method="post" action="{{route('vendas.createvendasentrada')}}">
+@csrf
   <div class="form-row ">
     <div class="form-group col-md-4">
       <label for="inputState">Recebimentos</label>
-      <select id="inputState" class="form-control">
+      <select id="inputState" class="form-control" required name="pagamento">
         <option selected value="selecione">Selecione</option>
         <option value="dinheiro">Dinheiro</option>
-        <option value="debito">Cartão débito</option>
-        <option value="crédito">Cartão crédito</option>
+        <option value="cartao de debito">Cartão débito</option>
+        <option value="cartao de credito">Cartão crédito</option>
         <option value="boleto">Boleto</option>
         <option value="cheque">Cheque</option>
-        <option value="cheque">Vendas em Carteira</option>
-        <option value="cheque">Empréstimos</option>
-        <option value="cheque">Pagamento antecipado</option>
-        <option value="cheque">Limite de cheque especial das contas bancárias</option>
+        <option value="vendas em carteira">Vendas em Carteira</option>
+        <option value="emprestimos">Empréstimos</option>
+        <option value="pagamento antecipado">Pagamento antecipado</option>
+        <option value="limite de cheque especial">Limite de cheque especial das contas bancárias</option>
       </select>
     </div>
     <div class="form-row">
       <div class="form-group col-md-9 col-lg-12  ml-2">
         <label for="inputEmail4">Valor</label>
-        <input type="text" class="form-control" id="valor" placeholder="Ex: 25 ,00">
+        <input type="text" class="form-control" id="valor" placeholder="Ex: 25 ,00" required name="valor">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-9 col-lg-12 ml-2">
         <label for="inputEmail4">Data</label>
-        <input type="date" class="form-control" id="date">
+        <input type="date" class="form-control" id="date" required name="data">
       </div>
     </div>
 
   </div>
 
-  <button type="button" class="btn btn-primary">Cadastrar</button>
+  <button type="submit" href="{{route('vendas.createvendasentrada')}}" class="btn btn-primary">Cadastrar</button>
 
 </form>
 
@@ -72,25 +75,26 @@
     </tr>
   </thead>
   <tbody>
+@foreach($vendasentrada as $venda)
+
     <tr>
-      <th scope="row">1</th>
-      <td>Credito</td>
-      <td>R$150,00</td>
-      <td>09/03/1998</td>
+      <th scope="row">{{$venda->id}}</th>
+      <td>{{$venda->pagamento}}</td>
+      <td>{{$venda->valor}}</td>
+      <td>{{$venda->data}}</td>
+      <td>
+      <a href="#alterar">Alterar</a>
+      <a href="{{route('vendas.destroy', $venda->id)}}">Deletar</a>
+
+      </td>
+
+
+  @endforeach
+
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Debito</td>
-      <td>R$160,00</td>
-      <td>09/03/1998</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Boleto</td>
-      <td>R$190,00</td>
-      <td>09/03/1998</td>
-    </tr>
+
   </tbody>
+
 </table>
 
 

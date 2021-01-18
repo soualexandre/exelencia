@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vendas;
+use App\Models\VendasEntrada;
 
 class VendasController extends Controller
 {
@@ -21,7 +22,9 @@ class VendasController extends Controller
     }
 
     public function entrada(){
-        return view('vendas.entrada');
+        $vendasentrada = VendasEntrada::orderBy('id', 'DESC')->paginate('8');
+
+        return view('vendas.entrada',compact('vendasentrada'));
     }
 
     public function saida(){
@@ -56,6 +59,23 @@ class VendasController extends Controller
         Vendas::create($validated);
 
         $vendas = Vendas::orderBy('id', 'DESC')->paginate('8');
+
+        return back()->withStatus(__('Operação adicionada com sucesso'));
+
+    }
+
+    public function vendasentrada(Request $request)
+    {
+
+        $validated = $request->validate([
+            'pagamento' => 'required|max:255',
+            'valor' => 'required',
+            'data' => 'required',
+        ]);
+        
+        VendasEntrada::create($validated);
+
+        $vendasentrada = VendasEntrada::orderBy('id', 'DESC');
 
         return back()->withStatus(__('Operação adicionada com sucesso'));
 

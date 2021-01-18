@@ -32,8 +32,8 @@
       <select id="inputState" class="form-control" required name="pagamento">
         <option selected value="selecione">Selecione</option>
         <option value="dinheiro">Dinheiro</option>
-        <option value="debito">Cartão débito</option>
-        <option value="crédito">Cartão crédito</option>
+        <option value="cartao de debito">Cartão débito</option>
+        <option value="cartao de credito">Cartão crédito</option>
         <option value="boleto">Boleto</option>
         <option value="cheque">Cheque</option>
       </select>
@@ -42,6 +42,7 @@
       <div class="form-group col-md-9 col-lg-12  ml-2">
         <label for="inputEmail4">Valor</label>
         <input type="text" class="form-control" id="valor" placeholder="Ex: 25,00" required name="valor">
+       
       </div>
     </div>
 
@@ -54,7 +55,7 @@
 
   </div>
 
-  <button type="submit" class="btn btn-primary"  href="{{route('vendas.create')}}">Cadastrar Venda</button>
+  <button type="submit" class="btn btn-primary" href="{{route('vendas.create')}}">Cadastrar Venda</button>
 
 </form>
 
