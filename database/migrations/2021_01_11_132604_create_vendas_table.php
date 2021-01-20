@@ -15,10 +15,12 @@ class CreateVendasTable extends Migration
     {
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
-            $table->string('pagamento');
+            $table->string('pagamento', 20);
             $table->float('valor');
             $table->date('data');
             $table->timestamps();
+            $table->unsignedBigInteger('id_usuario');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

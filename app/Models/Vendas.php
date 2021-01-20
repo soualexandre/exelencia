@@ -15,4 +15,8 @@ class Vendas extends Model
     ];
 
     use HasFactory;
+
+    public function vendas(){
+        return $this->belongsToMany(Vendas::class, 'id_usuario');
+    }
 }

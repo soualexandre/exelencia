@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vendas;
 use App\Models\VendasEntrada;
+use Illuminate\Support\Facades\DB;
+
 
 class VendasController extends Controller
 {
@@ -16,12 +18,15 @@ class VendasController extends Controller
      */
     public function index()
     {
-        $vendas = Vendas::orderBy('id', 'DESC')->paginate('8');
+        $id = auth()->user()->id;
+
+        $vendas = Vendas::where('id_usuario', $id)->orderBy('id', 'DESC')->paginate('8');
 
         return view('vendas.index', compact('vendas'));
     }
 
     public function entrada(){
+
         $vendasentrada = VendasEntrada::orderBy('id', 'DESC')->paginate('8');
 
         return view('vendas.entrada',compact('vendasentrada'));
@@ -49,16 +54,12 @@ class VendasController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
-            'pagamento' => 'required|max:255',
-            'valor' => 'required',
-            'data' => 'required',
-        ]);
+        $pagamento = $request->input('pagamento');
+        $valor = $request->input('valor');
+        $data = $request->input('data');
+        $id = auth()->user()->id;
         
-        Vendas::create($validated);
-
-        $vendas = Vendas::orderBy('id', 'DESC')->paginate('8');
+        DB::insert('insert into vendas (pagamento, valor, data, id_usuario) values (?, ?, ?, ?)', [$pagamento, $valor, $data, $id]);
 
         return back()->withStatus(__('Operação adicionada com sucesso'));
 
@@ -66,7 +67,6 @@ class VendasController extends Controller
 
     public function vendasentrada(Request $request)
     {
-
         $validated = $request->validate([
             'pagamento' => 'required|max:255',
             'valor' => 'required',
@@ -114,7 +114,6 @@ class VendasController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
