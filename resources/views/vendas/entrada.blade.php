@@ -3,25 +3,12 @@
 @section('content')
 
 @include('alerts.success')
-<div class="row">
-  <div class="col-md-12">
+<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>   
 
-    <!--Inicio DropDown -->
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Menu
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{{route('vendas.index')}}">Vendas Efetivadas - DRE</a>
-        <a class="dropdown-item" href="{{route('vendas.entrada')}}">Entradas de Caixa</a>
-        <a class="dropdown-item" href="{{route('vendas.saida')}}">Saídas de Caixa</a>
-      </div>
-    </div>
-    <h2>Entradas de Caixa</h2>
-  </div>
-
-
-</div>
+<script>
+    $('.dinheiro').mask('#.##0,00', {reverse: true});
+  }
+</script>
 <form clas="ml-4" method="post" action="{{route('vendas.createvendasentrada')}}">
 @csrf
   <div class="form-row ">
@@ -43,7 +30,7 @@
     <div class="form-row">
       <div class="form-group col-md-9 col-lg-12  ml-2">
         <label for="inputEmail4">Valor</label>
-        <input type="text" class="form-control" id="valor" placeholder="Ex: 25 ,00" required name="valor">
+        <label for="dinheiro">R$</label><input type="text" id="dinheiro" name="dinheiro" class="dinheiro form-control" style="display:inline-block" />
       </div>
     </div>
 
@@ -80,7 +67,7 @@
     <tr>
       <th scope="row">{{$venda->id}}</th>
       <td>{{$venda->pagamento}}</td>
-      <td>{{$venda->valor}}</td>
+      <td>{{$venda->valor}} </td>
       <td>{{$venda->data}}</td>
       <td>
       <a href="#alterar">Alterar</a>

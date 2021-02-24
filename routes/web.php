@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -29,6 +29,7 @@ Route::get('/vendas/saida', 'App\Http\Controllers\admin\vendasController@saida')
 Route::post('/vendas/create', 'App\Http\Controllers\admin\vendasController@store')->name('vendas.create')->middleware('auth');
 Route::post('/vendas/createentrada', 'App\Http\Controllers\admin\vendasController@vendasentrada')->name('vendas.createvendasentrada')->middleware('auth');
 Route::get('/vendas/destroy/{id}', 'App\Http\Controllers\admin\vendasController@destroy')->name('vendas.destroy')->middleware('auth');
+Route::get('/vendas/fluxo', 'App\Http\Controllers\admin\vendasController@fluxo')->name('vendas.fluxo')->middleware('auth');
 
 
 Route::group(['middleware' => 'auth'], function () {

@@ -27,7 +27,7 @@
             </div>
 
             <div class="font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-            <a href="">
+            <a href="{{route('vendas.fluxo')}}">
               <div class="font-icon-detail">
                 <i class="tim-icons icon-coins"></i> 
                 <h4 class="mt-4">FLUXO DE CAIXA</h4>

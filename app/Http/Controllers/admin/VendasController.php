@@ -81,6 +81,18 @@ class VendasController extends Controller
 
     }
 
+
+    public function fluxo(Request $request)
+    {
+       
+        $id = auth()->user()->id;
+
+        $vendas = Vendas::where('id_usuario', $id)->orderBy('id', 'DESC')->paginate('50');
+
+        return view('caixa.fluxoCaixa', compact('vendas'));
+
+    }
+
     /**
      * Display the specified resource.
      *
