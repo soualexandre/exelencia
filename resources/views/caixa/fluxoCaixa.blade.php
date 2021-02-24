@@ -3,23 +3,60 @@
 @section('content')
 
 
-<input type="date" value="{{ request('data_inicio') }}" name="data_inicio" />
-<input type="date" value="{{ request('data_fim') }}" name="data_fim" />
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="title">Bem vindo ao Excelência Sistemas!</h4>
+          <p class="category">Desenvolvido por
+            <a href="https://www.c2atech.com.br">C2A Techonoly</a>
+          </p>
+        </div>
+        <div class="card-header" style="text-align: center;">
+        <h4>Escolha a opção desejada:</h4>
+        </div>
+
+        <div class="card-body all-icons">
+          <div class="row">
+            <div class="font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+              <div class="font-icon-detail">
+                <h4 class="mt-4">Vendas no mês</h4>
+                <h1>200</h1>
+              </div>
+            </div>
+
+            <div class="font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+              <div class="font-icon-detail">
+                <h4 class="mt-4">Vendas no mês</h4>
+                <h1>200</h1>
+              </div>
+            </div>
+
+            <div class="font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+              <div class="font-icon-detail">
+                <h4 class="mt-4">Vendas no mês</h4>
+                <h1>200</h1>
+              </div>
+            </div>
+
+            <div class="font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+              <div class="font-icon-detail">
+                <h4 class="mt-4">Vendas no mês</h4>
+                <h1>200</h1>
+              </div>
+            </div>
 
 
-@foreach($vendas as $venda)
-   <div>{{ $venda->pagamento }}</div>
-@endforeach
+          </div>
+        </div>
+     
 
 <div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title ">Simple Table</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
-          </div>
+        
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
