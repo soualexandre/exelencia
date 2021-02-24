@@ -57,6 +57,7 @@ class VendasController extends Controller
         $pagamento = $request->input('pagamento');
         $valor = $request->input('valor');
         $data = $request->input('data');
+        
         $id = auth()->user()->id;
         
         DB::insert('insert into vendas (pagamento, valor, data, id_usuario) values (?, ?, ?, ?)', [$pagamento, $valor, $data, $id]);

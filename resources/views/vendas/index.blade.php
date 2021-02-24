@@ -80,7 +80,8 @@
       <th scope="row">{{$venda->id}}</th>
       <td>{{$venda->pagamento}}</td>
       <td>{{$venda->valor}}</td>
-      <td>{{$venda->data}}</td>
+      <td>{{date('d/m/y', strtotime($venda->data))}} </td>
+
       <td>
       <a href="#alterar">Alterar</a>
       <a href="{{route('vendas.destroy', $venda->id)}}">Deletar</a>

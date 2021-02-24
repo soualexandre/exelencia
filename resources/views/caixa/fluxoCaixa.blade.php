@@ -2,6 +2,15 @@
 
 @section('content')
 
+
+<input type="date" value="{{ request('data_inicio') }}" name="data_inicio" />
+<input type="date" value="{{ request('data_fim') }}" name="data_fim" />
+
+
+@foreach($vendas as $venda)
+   <div>{{ $venda->pagamento }}</div>
+@endforeach
+
 <div class="content">
   <div class="container-fluid">
     <div class="row">
@@ -41,7 +50,7 @@
                     {{$venda->valor}}
                     </td>
                     <td>
-                    {{$venda->data}}
+                    {{date('d/m/y', strtotime($venda->data))}} 
                     </td>
                    
                   </tr>

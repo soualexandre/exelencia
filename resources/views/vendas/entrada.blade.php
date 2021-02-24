@@ -6,7 +6,7 @@
 <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>   
 
 <script>
-    $('.dinheiro').mask('#.##0,00', {reverse: true});
+  $('.dinheiro').mask('#.##0,00', {reverse: true});
   }
 </script>
 <form clas="ml-4" method="post" action="{{route('vendas.createvendasentrada')}}">
@@ -68,7 +68,7 @@
       <th scope="row">{{$venda->id}}</th>
       <td>{{$venda->pagamento}}</td>
       <td>{{$venda->valor}} </td>
-      <td>{{$venda->data}}</td>
+      <td>{{date('d/m/y', strtotime($venda->data))}} </td>
       <td>
       <a href="#alterar">Alterar</a>
       <a href="{{route('vendas.destroy', $venda->id)}}">Deletar</a>
